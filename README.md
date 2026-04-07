@@ -21,3 +21,13 @@ Python version:                                                                 
 Platform:                                      Linux-5.15.0-139-generic-x86_64-with-glibc2.31
 FastMCP root path: /home/goudot/develLocal/immo-goudot-MCP/.venv/lib/python3.10/site-packages
 ```
+
+## Lancement 
+Server :
+```bash
+ uv run fastmcp run main.py:mcp --transport http --port 8000
+```
+Client : 
+```bash
+ uv run client.py
+```
