@@ -12,6 +12,7 @@ https://gofastmcp.com/getting-started/quickstart
 
 ## Init
 > uv init
+> uv add fastmcp
 
 > uv run fastmcp version
 ```text
@@ -31,3 +32,14 @@ Client :
 ```bash
  uv run client.py
 ```
+
+#  Deploy (local)
+> docker build -t immo-mcd .
+> docker run -it --rm --name immo-mcd -p 8880:8000 immo-mcd
+
+
+## K3S Datalab
+Création instance EC2 (ports SSH, HTTP)
+
+> sudo kubectl get namespace # liste des namespace
+> sudo kubectl get all
