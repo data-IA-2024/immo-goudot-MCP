@@ -8,4 +8,4 @@ async def call_tool(name: str):
         result = await client.call_tool("greet", {"name": name})
         print(result)
 
-asyncio.run(call_tool("Ford"))
+asyncio.run(call_tool("Emmanuel"))
