@@ -35,7 +35,8 @@ Client :
 
 #  Deploy (local)
 > docker build -t immo-mcd .
-> docker run -it --rm --name immo-mcd -p 8880:8000 immo-mcd
+> docker run -it --rm --name immo-mcd -p 8000:8000 immo-mcd
+> docker run -it --rm --name immo-mcd-ghcr -e APP_NAME=GHCR-APP -p 8000:8000 ghcr.io/data-ia-2024/immo-goudot-mcp:main
 
 > docker pull ghcr.io/data-ia-2024/immo-goudot-mcp:main
 > docker run -it --rm --name immo-mcd -p 8880:8000 ghcr.io/data-ia-2024/immo-goudot-mcp:main
@@ -50,3 +51,11 @@ Déployer nginx:
 > kubectl apply -f nginx-deployment.yaml # déploie
 > kubectl delete -f nginx-deployment.yaml # supprime
 
+Secrets:
+> kubectl get secret -n goudot-ns
+> kubectl create secret generic goudot-env --namespace=goudot-ns --from-env-file=.env.mcp
+> kubectl delete secret generic goudot-env --namespace=goudot-ns
+
+> kubectl apply -f goudot-client.yaml
+> kubectl delete -f goudot-client.yaml
+> kubectl rollout restart deployment.apps/goudot-client -n goudot-ns
