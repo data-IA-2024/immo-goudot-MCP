@@ -6,8 +6,8 @@ import os, time
 load_dotenv()
 
 MCP_SERVER=os.getenv("MCP_SERVER")
-client = Client(MCP_SERVER)
 print(f"{MCP_SERVER=}")
+client = Client(MCP_SERVER)
 
 async def call_tool(name: str):
     async with client:
