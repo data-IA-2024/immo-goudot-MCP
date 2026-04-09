@@ -6,6 +6,7 @@ load_dotenv()
 
 NAME = os.getenv("APP_NAME", "NOTHING")
 NO = random.randrange(9999999999)
+print(f"Server : {NAME}-{NO}")
 
 mcp = FastMCP("My MCP Server")
 
