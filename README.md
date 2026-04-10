@@ -45,17 +45,20 @@ Client :
 Création instance EC2 (ports SSH, HTTP)
 
 > sudo kubectl get namespace # liste des namespace
-> sudo kubectl get all
-
-Déployer nginx:
-> kubectl apply -f nginx-deployment.yaml # déploie
-> kubectl delete -f nginx-deployment.yaml # supprime
+> sudo kubectl get all # 
 
 Secrets:
 > kubectl get secret -n goudot-ns
 > kubectl create secret generic goudot-env --namespace=goudot-ns --from-env-file=.env.mcp
 > kubectl delete secret generic goudot-env --namespace=goudot-ns
 
+Création Namespace : goudot-ns.yaml  
+Création Deployment (3 instances de ghcr.io/data-ia-2024/immo-goudot-mcp:main) : goudot-app.yaml
+Création Service : goudot-service.yaml  
+
+Appliquer les ressources du fichier :
 > kubectl apply -f goudot-client.yaml
+Supprimer les ressources du fichier :
 > kubectl delete -f goudot-client.yaml
+Restart déploiement : 
 > kubectl rollout restart deployment.apps/goudot-client -n goudot-ns
