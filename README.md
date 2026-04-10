@@ -67,3 +67,6 @@ Supprimer les ressources du fichier :
 > kubectl delete -f goudot-client.yaml  
 Restart déploiement : 
 > kubectl rollout restart deployment.apps/goudot-client -n goudot-ns  
+
+Logs du client :  
+![screen-client.png](K3S/screen-client.png)
