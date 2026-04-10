@@ -42,15 +42,18 @@ Client :
 > docker run -it --rm --name immo-mcd -p 8880:8000 ghcr.io/data-ia-2024/immo-goudot-mcp:main  
 
 ## K3S Datalab
-Création instance EC2 (ports SSH, HTTP)
+Utilisation de kebernetes https://kubernetes.io/docs/reference/kubectl/  
 
 > sudo kubectl get namespace # liste des namespace  
 > sudo kubectl get all #   
 
-Secrets:
-> kubectl get secret -n goudot-ns  
+Secrets:  
+Création à partir de fichier  
 > kubectl create secret generic goudot-env --namespace=goudot-ns --from-env-file=.env.mcp  
+Suppression  
 > kubectl delete secret generic goudot-env --namespace=goudot-ns  
+Liste des secrets  
+> kubectl get secret -n goudot-ns
 
 Création Namespace : goudot-ns.yaml  
 Création Deployment (3 instances de ghcr.io/data-ia-2024/immo-goudot-mcp:main) : goudot-app.yaml
