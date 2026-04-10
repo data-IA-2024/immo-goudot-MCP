@@ -46,7 +46,8 @@ Utilisation de kubernetes https://kubernetes.io/docs/reference/kubectl/
 ![schema-k3s.png](K3S/schema-k3s.png)
 
 > sudo kubectl get namespace # liste des namespace  
-> sudo kubectl get all #   
+> sudo kubectl get all -n goudot-ns #   
+![screen-get-all.png](K3S/screen-get-all.png)
 
 Secrets:  
 Création à partir de fichier  
