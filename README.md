@@ -42,7 +42,8 @@ Client :
 > docker run -it --rm --name immo-mcd -p 8880:8000 ghcr.io/data-ia-2024/immo-goudot-mcp:main  
 
 ## K3S Datalab
-Utilisation de kebernetes https://kubernetes.io/docs/reference/kubectl/  
+Utilisation de kubernetes https://kubernetes.io/docs/reference/kubectl/  
+![schema-k3s.png](K3S/schema-k3s.png)
 
 > sudo kubectl get namespace # liste des namespace  
 > sudo kubectl get all #   
