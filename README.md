@@ -34,31 +34,31 @@ Client :
 ```
 
 #  Deploy (local)
-> docker build -t immo-mcd .
-> docker run -it --rm --name immo-mcd -p 8000:8000 immo-mcd
-> docker run -it --rm --name immo-mcd-ghcr -e APP_NAME=GHCR-APP -p 8000:8000 ghcr.io/data-ia-2024/immo-goudot-mcp:main
+> docker build -t immo-mcd .  
+> docker run -it --rm --name immo-mcd -p 8000:8000 immo-mcd  
+> docker run -it --rm --name immo-mcd-ghcr -e APP_NAME=GHCR-APP -p 8000:8000 ghcr.io/data-ia-2024/immo-goudot-mcp:main  
 
-> docker pull ghcr.io/data-ia-2024/immo-goudot-mcp:main
-> docker run -it --rm --name immo-mcd -p 8880:8000 ghcr.io/data-ia-2024/immo-goudot-mcp:main
+> docker pull ghcr.io/data-ia-2024/immo-goudot-mcp:main  
+> docker run -it --rm --name immo-mcd -p 8880:8000 ghcr.io/data-ia-2024/immo-goudot-mcp:main  
 
 ## K3S Datalab
 Création instance EC2 (ports SSH, HTTP)
 
-> sudo kubectl get namespace # liste des namespace
-> sudo kubectl get all # 
+> sudo kubectl get namespace # liste des namespace  
+> sudo kubectl get all #   
 
 Secrets:
-> kubectl get secret -n goudot-ns
-> kubectl create secret generic goudot-env --namespace=goudot-ns --from-env-file=.env.mcp
-> kubectl delete secret generic goudot-env --namespace=goudot-ns
+> kubectl get secret -n goudot-ns  
+> kubectl create secret generic goudot-env --namespace=goudot-ns --from-env-file=.env.mcp  
+> kubectl delete secret generic goudot-env --namespace=goudot-ns  
 
 Création Namespace : goudot-ns.yaml  
 Création Deployment (3 instances de ghcr.io/data-ia-2024/immo-goudot-mcp:main) : goudot-app.yaml
 Création Service : goudot-service.yaml  
 
 Appliquer les ressources du fichier :
-> kubectl apply -f goudot-client.yaml
+> kubectl apply -f goudot-client.yaml  
 Supprimer les ressources du fichier :
-> kubectl delete -f goudot-client.yaml
+> kubectl delete -f goudot-client.yaml  
 Restart déploiement : 
-> kubectl rollout restart deployment.apps/goudot-client -n goudot-ns
+> kubectl rollout restart deployment.apps/goudot-client -n goudot-ns  
