@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goudot-client
+  namespace: goudot-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goudot-client
+  template:
+    metadata:
+      labels:
+        app: goudot-client
+    spec:
+      imagePullSecrets:
+      - name: ghcr-secret
+      containers:
+      - name: goudot-app
+        image: ghcr.io/data-ia-2024/immo-goudot-mcp:main
+        imagePullPolicy: Always
+        envFrom:
+        - secretRef:
+            name: goudot-env
+        command: ["python", "client.py"]

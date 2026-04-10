@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goudot-app
+  namespace: goudot-ns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: goudot-app
+  template:
+    metadata:
+      labels:
+        app: goudot-app
+    spec:
+      imagePullSecrets:
+      - name: ghcr-secret
+      containers:
+      - name: goudot-app
+        image: ghcr.io/data-ia-2024/immo-goudot-mcp:main
+        imagePullPolicy: Always
+        envFrom:
+        #- configMapRef:
+        #    name: goudot-env
+        - secretRef:
+            name: goudot-env
